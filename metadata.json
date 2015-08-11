@@ -7,6 +7,7 @@
   "source": "https://github.com/rebuy-de/puppet-solr5",
   "project_page": "https://github.com/rebuy-de/puppet-solr5",
   "issues_url": "https://github.com/rebuy-de/puppet-solr5/issues",
+  "tags": ["solr"],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat"
