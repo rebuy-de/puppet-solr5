@@ -1,0 +1,14 @@
+{
+  "name": "puppet-solr5",
+  "version": "0.1.0",
+  "author": "Daniel Freudenberger",
+  "summary": "installs solr 5 as a service",
+  "license": "Apache 2.0",
+  "source": "https://github.com/rebuy-de/puppet-solr5",
+  "project_page": "https://github.com/rebuy-de/puppet-solr5",
+  "issues_url": "https://github.com/rebuy-de/puppet-solr5/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
