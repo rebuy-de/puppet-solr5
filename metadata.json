@@ -1,5 +1,5 @@
 {
-  "name": "puppet-solr5",
+  "name": "reBuy-solr5",
   "version": "0.1.0",
   "author": "Daniel Freudenberger",
   "summary": "installs solr 5 as a service",
@@ -7,8 +7,33 @@
   "source": "https://github.com/rebuy-de/puppet-solr5",
   "project_page": "https://github.com/rebuy-de/puppet-solr5",
   "issues_url": "https://github.com/rebuy-de/puppet-solr5/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat"
+    },
+    {
+      "operatingsystem": "Ubuntu"
+    },
+    {
+      "operatingsystem": "Suse"
+    },
+    {
+      "operatingsystem": "Debian"
+    }
+  ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name":"dsestero-download_uncompress",
+      "version_requirement": ">= 1.1.1"
+    },
+    {
+      "name": "puppetlabs-concat",
+      "version_requirement": ">= 1.2.4"
+    }
   ]
 }
 
