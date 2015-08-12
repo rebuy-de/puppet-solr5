@@ -24,16 +24,13 @@
   ],
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 1.0.0"
+      "name": "puppetlabs-stdlib"
     },
     {
-      "name":"dsestero-download_uncompress",
-      "version_requirement": ">= 1.1.1"
+      "name": "camptocamp-archive"
     },
     {
-      "name": "puppetlabs-concat",
-      "version_requirement": ">= 1.2.4"
+      "name": "puppetlabs-concat"
     }
   ]
 }

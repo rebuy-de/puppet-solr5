@@ -9,10 +9,6 @@
 #   download url from the solr archive you'd like to install.
 #   default: http://ftp.halifax.rwth-aachen.de/apache/lucene/solr/5.2.1/solr-5.2.1.tgz
 #
-# [*package_version*]
-#   this paramter has to match the package version you'd like to install
-#   default: 5.2.1
-#
 # [*package_target_dir*]
 #   directory in the local filesystem where puppet stores the downloaded archive
 #   default: /usr/local/src
@@ -59,7 +55,6 @@
 #
 #   class { 'solr5':
 #       package_url => 'http://ftp.halifax.rwth-aachen.de/apache/lucene/solr/5.2.0/solr-5.2.0.tgz',
-#       package_version => '5.2.0'
 #   }
 #
 # Install solr and change some default values
@@ -81,7 +76,6 @@
 
 class solr5 (
     $package_url           = $solr5::params::package_url,
-    $package_version       = $solr5::params::package_version,
     $package_target_dir    = $solr5::params::package_target_dir,
     $solr_install_dir      = $solr5::params::solr_install_dir,
     $solr_data_dir         = $solr5::params::solr_data_dir,
@@ -92,7 +86,7 @@ class solr5 (
     $init_config           = $solr5::params::init_config
   ) inherits solr5::params {
 
-  $sources = "${package_target_dir}/solr-${package_version}"
+  $sources = "${package_target_dir}/solr5"
 
   anchor { 'solr5::begin': } ->
   class { '::solr5::install': } ->
