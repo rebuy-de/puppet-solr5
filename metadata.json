@@ -27,7 +27,7 @@
       "name": "puppetlabs-stdlib"
     },
     {
-      "name": "camptocamp-archive"
+      "name":"dsestero-download_uncompress"
     },
     {
       "name": "puppetlabs-concat"

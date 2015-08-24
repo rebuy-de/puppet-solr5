@@ -1,19 +1,13 @@
 class solr5::install inherits solr5 {
-  $filename = inline_template('<%= File.basename(@package_url) %>')
-  $shortname = regsubst($filename, '.tgz', '', 'G')
-
-  archive { $shortname:
-    ensure => present,
-    url => $package_url,
-    target => $sources,
-    src_target => $package_target_dir,
-    strip_components => 1,
-    checksum => false,
-    extension => 'tgz'
+  download_uncompress { $package_url:
+    distribution_name => $package_url,
+    dest_folder => $package_target_dir,
+    creates => $sources,
+    uncompress => 'tar.gz'
   } ->
 
   exec { 'install-solr':
-    command => "${sources}/bin/install_solr_service.sh ${package_target_dir}/${filename} \
+    command => "${sources}/bin/install_solr_service.sh ${sources}.tgz \
       -u ${solr_user} \
       -d ${solr_data_dir} \
       -i ${solr_install_dir} \
