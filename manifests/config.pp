@@ -13,13 +13,13 @@ class solr5::config inherits solr5 {
     order => '01'
   }
 
-  $settings = concat($init_config, [
+  $settings = concat([
     "SOLR_PID_DIR=${solr_data_dir}",
     "SOLR_HOME=${solr_data_dir}/data",
     "LOG4J_PROPS=${solr_data_dir}/log4j.properties",
     "SOLR_LOGS_DIR=${solr_data_dir}/logs",
     "SOLR_PORT=${solr_port}"
-  ])
+  ], $init_config)
 
   concat::fragment { 'solr_config_ext':
     target => $config_file,
