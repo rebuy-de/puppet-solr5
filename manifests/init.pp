@@ -93,6 +93,7 @@ class solr5 (
   ) inherits solr5::params {
 
   $sources = "${package_target_dir}/solr-${package_version}"
+  $solr_archive_file_name = "solr-${package_version}.tgz"
 
   anchor { 'solr5::begin': } ->
   class { '::solr5::install': } ->
