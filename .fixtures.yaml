@@ -1,0 +1,9 @@
+fixtures:
+  forge_modules:
+    "wget": "maestrodev/wget"
+    "stdlib": "puppetlabs/stdlib"
+    "concat":
+      "repo": "puppetlabs/concat"
+      "ref": "1.2.0"
+  symlinks:
+    "solr5": "#{source_dir}"
