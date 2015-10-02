@@ -10,27 +10,22 @@
   "tags": ["solr"],
   "operatingsystem_support": [
     {
-      "operatingsystem": "RedHat"
-    },
-    {
-      "operatingsystem": "Ubuntu"
-    },
-    {
-      "operatingsystem": "Suse"
-    },
-    {
-      "operatingsystem": "Debian"
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": ["6.6", "6.7"]
     }
   ],
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib"
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "4.x"
     },
     {
-      "name":"dsestero-download_uncompress"
+      "name":"maestrodev/wget",
+      "version_requirement": "1.x"
     },
     {
-      "name": "puppetlabs-concat"
+      "name": "puppetlabs/concat",
+      "version_requirement": "1.x"
     }
   ]
 }

@@ -15,65 +15,105 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This puppet module installs Solr version 5.x from a given URL pointing to a package. 
+Allowing you to add aditional configuration and setting up the service, so Solr is started in the background. 
+The module is currently tested on CentOS 6.6 and 6.7.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+This module installs Solr 5.x and a current Java Version as prerequisite to run Solr.
+It allows to automatically setting up a Solr installation with your provided configuration based on the configuration delivered with Solr.
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
 
 ## Setup
 
 ### What solr5 affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* It downloads the archive to /tmp or a provided directory using the wget module
+* It will create the installation directory under /opt 
+* It will create the data directory defaulting to /var/solr
+* It creates a service, might be disabled, which runs Solr.
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+You need to create the user and group for the solr user in advance, also make sure that java is installed as prerequisite of this module.
 
 ### Beginning with solr5
 
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+If you can live with the defaults from [params.pp](manifests/params.pp) and already installed a recent Java version all you need is to include `class { 'solr5': }`. Feel free to alter the parameters, if it suits you better.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+Currently the only resource needed to configure the system is [init.pp](manifests/init.pp), you find a description of the parameters there.
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+#### Public Classes
+*[`solr5`](#solr5): Orchestrating and configuring the installation
+
+### Private Classes
+* [`solr5::config`]: extracting the base configuration and merge it with the optionally provided configuration
+* [`solr5::extract_file`]: a define to extract a specific file from a .tar.gz archive
+* [`solr5::install.pp`]: downloads the archive, extracts and execute the installation script      
+* [`solr5::params`]: sane defaults
+* [`solr5::service`]: installs the solr service
+
+### `solr5`
+#### Parameters
+##### package_url
+  Download url from the solr archive you'd like to install. Default: http://ftp.halifax.rwth-aachen.de/apache/lucene/solr/5.2.1/solr-5.2.1.tgz
+
+##### package_version
+This paramter has to match the package version you'd like to install. Default: 5.2.1
+
+##### package_target_dir
+Directory in the local filesystem where puppet stores the downloaded archive. Default /tmp
+
+##### solr_install_dir
+Directory where the solr server files are installed to. Solr will create a directory $solr_install_dir/solr-$version and a symlink $solr_install_dir/solr which points to the created directory. Default: /opt
+
+##### solr_data_dir
+Directory where the solr will stores it's index files. Default: /var/solr
+
+##### solr_port
+Solr will listen on this port for incoming connections. Default: 8983
+
+##### solr_name
+Solr will register itself as a service with this name. Default: solr
+
+##### solr_user
+Solr will be run as this user. Default: solr
+
+##### manage_service
+Should puppet manage the solr service? If set to true, puppet will make sure the service is installed and solr is running. Default: true
+
+##### init_config
+List of additional startup values passed to solr. Take a look at https://svn.apache.org/repos/asf/lucene/dev/branches/branch_5x/solr/bin/solr.in.sh to get a list of available options. Default values will be overriden by the values provided. Default: []
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+The module is tested against Pupet Version 3.8 on CentOS 6.6 and 6.7. Other configurations might work but are currently not tested.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Feel free to fork and create pull requests, your code should adhere the to the best practices described at [https://docs.puppetlabs.com/puppet/3.8/reference/modules_fundamentals.html](https://docs.puppetlabs.com/puppet/3.8/reference/modules_fundamentals.html). 
+Please test additional implemented functionality.
 
-## Release Notes/Contributors/Etc **Optional**
+For developing you will currently need:
+* Ruby version `1.9.3p551`
+* Bundler in version `1.10.5`
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+### Prepare development environment
+* Install rbenv [rbenv](https://github.com/sstephenson/rbenv) 
+* Install the required version of ruby using `rbenv install 1.9.3p551`. 
+* run `rbenv rehash`
+* update gem `gem update --system`
+* install bundler: `gem install bundler -v 1.10.5
+* run `rbenv rehash`
+* change into cloned archive
+* run `bundle install`
+* Install Vagrant from [https://www.vagrantup.com/](https://www.vagrantup.com/)
+* Install Virtualbox [https://www.virtualbox.org/](https://www.virtualbox.org/)
+
+### Run tests
+All tests can be run using `bundle exec rake`.
