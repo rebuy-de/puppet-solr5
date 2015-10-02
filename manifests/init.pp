@@ -96,8 +96,27 @@ class solr5 (
   $solr_archive_file_name = "solr-${package_version}.tgz"
 
   anchor { 'solr5::begin': } ->
-  class { '::solr5::install': } ->
-  class { '::solr5::config': } ~>
-  class { '::solr5::service': } ->
+  class { '::solr5::install':
+    package_url            => $package_url,
+    package_target_dir     => $package_target_dir,
+    solr_archive_file_name => $solr_archive_file_name,
+    solr_user              => $solr_user,
+    solr_data_dir          => $solr_data_dir,
+    solr_install_dir       => $solr_install_dir,
+    solr_port              => $solr_port,
+    solr_name              => $solr_name
+  } ->
+  class { '::solr5::config':
+    solr_data_dir          => $solr_data_dir,
+    package_target_dir     => $package_target_dir,
+    solr_archive_file_name => $solr_archive_file_name,
+    init_config            => $init_config,
+    solr_user              => $solr_user,
+    solr_port              => $solr_port
+  } ~>
+  class { '::solr5::service':
+    manage_service => $manage_service,
+    solr_name      => $solr_name
+  } ->
   anchor { 'solr5::end': }
 }
