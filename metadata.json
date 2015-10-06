@@ -3,34 +3,29 @@
   "version": "0.1.0",
   "author": "Daniel Freudenberger",
   "summary": "installs solr 5 as a service",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/rebuy-de/puppet-solr5",
   "project_page": "https://github.com/rebuy-de/puppet-solr5",
   "issues_url": "https://github.com/rebuy-de/puppet-solr5/issues",
   "tags": ["solr"],
   "operatingsystem_support": [
     {
-      "operatingsystem": "RedHat"
-    },
-    {
-      "operatingsystem": "Ubuntu"
-    },
-    {
-      "operatingsystem": "Suse"
-    },
-    {
-      "operatingsystem": "Debian"
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": ["6.6", "6.7"]
     }
   ],
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib"
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "4.x"
     },
     {
-      "name": "camptocamp-archive"
+      "name":"maestrodev/wget",
+      "version_requirement": "1.x"
     },
     {
-      "name": "puppetlabs-concat"
+      "name": "puppetlabs/concat",
+      "version_requirement": "1.x"
     }
   ]
 }
