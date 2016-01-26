@@ -4,7 +4,9 @@ class solr5::config (
   $solr_archive_file_name,
   $init_config,
   $solr_user,
-  $solr_port
+  $solr_port,
+  $gc_log_file_count,
+  $gc_log_file_size
 ){
   $config_file = "${solr_data_dir}/solr.in.sh"
 
@@ -32,7 +34,8 @@ class solr5::config (
     "SOLR_HOME=${solr_data_dir}/data",
     "LOG4J_PROPS=${solr_data_dir}/log4j.properties",
     "SOLR_LOGS_DIR=${solr_data_dir}/logs",
-    "SOLR_PORT=${solr_port}"
+    "SOLR_PORT=${solr_port}",
+    "GC_LOG_OPTS=\"\$GC_LOG_OPTS -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=${gc_log_file_count} -XX:GCLogFileSize=${gc_log_file_size} \""
   ])
 
   concat::fragment { 'solr_config_ext':

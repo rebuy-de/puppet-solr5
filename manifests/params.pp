@@ -9,4 +9,6 @@ class solr5::params {
     $solr_user = 'solr'
     $manage_service = true
     $init_config = []
+    $gc_log_file_count = 5
+    $gc_log_file_size = '25M'
 }

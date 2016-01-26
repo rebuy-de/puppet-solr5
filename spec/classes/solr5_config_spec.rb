@@ -15,7 +15,9 @@ describe 'solr5::config', :type => 'class' do
        :solr_archive_file_name => 'solr-5.2.2-el6.tar.gz',
        :init_config => [],
        :solr_user => 'my_solr_user',
-       :solr_port => '1234'
+       :solr_port => '1234',
+       :gc_log_file_count => 5,
+       :gc_log_file_size => '25M'
      }
   end
 
@@ -34,7 +36,5 @@ describe 'solr5::config', :type => 'class' do
           'owner' => 'my_solr_user',
           'group' => 'my_solr_user'
         })
-
-
   }
 end
