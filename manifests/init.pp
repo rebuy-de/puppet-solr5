@@ -49,6 +49,17 @@
 #   to get a list of available options. Default values will be overriden by the values provided.
 #   default: []
 #
+# [*gc_log_file_count]
+#   how many files are used for logging garbage collection information.
+# 
+#   default: 5
+#
+# [*gc_log_file_size]
+#   how large each of the garbage collection logs can be.
+#   format: 25<unit> unit may be K for kilo bytes, M for Megabyte
+#
+#   default: 25M
+#
 # === Examples
 #
 # Simply install solr with its default values
@@ -89,7 +100,10 @@ class solr5 (
     $solr_name             = $solr5::params::solr_name,
     $solr_user             = $solr5::params::solr_user,
     $manage_service        = $solr5::params::manage_service,
-    $init_config           = $solr5::params::init_config
+    $init_config           = $solr5::params::init_config,
+    $gc_log_file_count     = $solr5::params::gc_log_file_count,
+    $gc_log_file_size      = $solr5::params::gc_log_file_size,
+
   ) inherits solr5::params {
 
   $sources = "${package_target_dir}/solr-${package_version}"
@@ -112,7 +126,9 @@ class solr5 (
     solr_archive_file_name => $solr_archive_file_name,
     init_config            => $init_config,
     solr_user              => $solr_user,
-    solr_port              => $solr_port
+    solr_port              => $solr_port,
+    gc_log_file_count      => $gc_log_file_count,
+    gc_log_file_size       => $gc_log_file_size,
   } ~>
   class { '::solr5::service':
     manage_service => $manage_service,

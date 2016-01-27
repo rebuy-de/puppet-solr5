@@ -20,6 +20,8 @@ gem 'serverspec', :require => false
 gem 'fog-google', '0.1.0'
 gem 'rake','0.9.2.2'
 gem 'bundler', '1.10.5'
+gem 'mime-types', '~> 2.99'
+gem 'vagrant-wrapper', '~> 2.0', '>= 2.0.3'
 if RUBY_VERSION >= '1.8.7' and RUBY_VERSION < '1.9'
   gem 'rspec', '~> 2.0'
 end
