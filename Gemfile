@@ -13,7 +13,6 @@ gem 'facter', '>= 1.7.0'
 gem 'beaker', '2.24.0'
 gem 'puppet-syntax', :require => false
 gem 'beaker-rspec', :require => false
-gem 'vagrant-wrapper', '~> 2.0.3'
 gem 'simplecov', :require => false
 gem 'pry', '0.10.2'
 gem 'serverspec', :require => false
