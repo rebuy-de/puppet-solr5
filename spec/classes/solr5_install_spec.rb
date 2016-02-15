@@ -6,6 +6,7 @@ describe 'solr5::install', :type => 'class' do
     {
        :package_url => 'http://anywhere.in/the/net',
        :package_target_dir => '/put/package/here',
+       :package_version => '5.2.2',
        :solr_archive_file_name => 'solr-5.2.2-el6.tar.gz',
        :solr_user => 'my_solr_user',
        :solr_data_dir => '/my/stuff',
@@ -41,8 +42,9 @@ describe 'solr5::install', :type => 'class' do
     -d /my/stuff \
     -i /install/solr/here \
     -p 1234 \
-    -s nice_name_for_solr",
-    'creates' => '/etc/init.d/solr'
+    -s nice_name_for_solr \
+    -f",
+    'creates' => '/install/solr/here/solr-5.2.2'
         }
       )
   }

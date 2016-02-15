@@ -1,6 +1,7 @@
 class solr5::install(
   $package_url,
   $package_target_dir,
+  $package_version,
   $solr_archive_file_name,
   $solr_user,
   $solr_data_dir,
@@ -8,7 +9,6 @@ class solr5::install(
   $solr_port,
   $solr_name
 ){
-
   wget::fetch { "download ${package_url}":
     source      => $package_url,
     destination => "${package_target_dir}/${solr_archive_file_name}"
@@ -31,7 +31,8 @@ class solr5::install(
     -d ${solr_data_dir} \
     -i ${solr_install_dir} \
     -p ${solr_port} \
-    -s ${solr_name}",
-    creates => '/etc/init.d/solr',
+    -s ${solr_name} \
+    -f",
+    creates => "${solr_install_dir}/solr-${package_version}",
   }
 }

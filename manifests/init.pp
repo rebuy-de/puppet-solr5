@@ -91,7 +91,7 @@
 #
 
 class solr5 (
-    $package_url           = $solr5::params::package_url,
+    $package_mirror        = $solr5::params::package_mirror,
     $package_version       = $solr5::params::package_version,
     $package_target_dir    = $solr5::params::package_target_dir,
     $solr_install_dir      = $solr5::params::solr_install_dir,
@@ -108,10 +108,12 @@ class solr5 (
 
   $sources = "${package_target_dir}/solr-${package_version}"
   $solr_archive_file_name = "solr-${package_version}.tgz"
+  $package_url = "${package_mirror}/lucene/solr/${package_version}/${solr_archive_file_name}"
 
   anchor { 'solr5::begin': } ->
   class { '::solr5::install':
     package_url            => $package_url,
+    package_version        => $package_version,
     package_target_dir     => $package_target_dir,
     solr_archive_file_name => $solr_archive_file_name,
     solr_user              => $solr_user,
