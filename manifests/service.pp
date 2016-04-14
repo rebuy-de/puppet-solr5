@@ -3,6 +3,14 @@ class solr5::service(
   $solr_name
 ){
   if $manage_service {
+
+    if $::operatingsystem in ['RedHat', 'CentOS'] {
+      exec {'reload service definitions to allow solr to start':
+        command     => '/bin/systemctl daemon-reload',
+        subscribe   => Solr5::Extract_file['install_solr_service.sh'],
+        refreshonly => true,
+      }
+    }
     service { $solr_name:
       ensure    => running,
       enable    => true,
