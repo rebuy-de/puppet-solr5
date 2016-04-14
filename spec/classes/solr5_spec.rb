@@ -6,7 +6,7 @@ describe 'solr5', :type => 'class' do
   let :facts do
     {
        :concat_basedir => '/your/temporary/concatenation/folder',
-       :operatingsystem => 'CentOS'
+       :service_provider => 'systemd'
      }
   end
 

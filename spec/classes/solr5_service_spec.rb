@@ -9,7 +9,7 @@ describe 'solr5::service', :type => 'class' do
     archive_filename => $solr_archive_file_name,
     file_to_extract  => "install_solr_service.sh"
   }' }
-    let(:facts) { {:operatingsystem => 'Debian'} }
+    let(:facts) { {:service_provider => 'init.d'} }
     let :params do
       {
         :manage_service => false,
@@ -31,7 +31,7 @@ describe 'solr5::service', :type => 'class' do
     archive_filename => $solr_archive_file_name,
     file_to_extract  => "install_solr_service.sh"
   }' }
-    let(:facts) { {:operatingsystem => 'CentOS'} }
+    let(:facts) { {:service_provider => 'systemd'} }
     let :params do
       {
         :manage_service => true,
@@ -62,7 +62,7 @@ describe 'solr5::service', :type => 'class' do
     archive_filename => $solr_archive_file_name,
     file_to_extract  => "install_solr_service.sh"
   }' }
-    let(:facts) { {:operatingsystem => 'Debian'} }
+    let(:facts) { {:service_provider => 'init.d'} }
     let :params do
       {
         :manage_service => true,
