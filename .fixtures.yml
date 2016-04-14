@@ -1,12 +1,12 @@
 fixtures:
   forge_modules:
-    wget: 
+    wget:
       repo: "maestrodev/wget"
       ref: "1.7.1"
       flags: --verbose
-    stdlib: 
+    stdlib:
       repo: "puppetlabs/stdlib"
-      ref: "4.9.0"
+      ref: "4.11.0"
       flags: --verbose
     concat:
       repo: "puppetlabs/concat"
