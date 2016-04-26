@@ -7,7 +7,7 @@ class solr5::config (
   $solr_port,
   $gc_log_file_count,
   $gc_log_file_size
-){
+) {
   $config_file = "${solr_data_dir}/solr.in.sh"
 
   solr5::extract_file { 'solr.in.sh':
@@ -35,7 +35,8 @@ class solr5::config (
     "LOG4J_PROPS=${solr_data_dir}/log4j.properties",
     "SOLR_LOGS_DIR=${solr_data_dir}/logs",
     "SOLR_PORT=${solr_port}",
-    "GC_LOG_OPTS=\"\$GC_LOG_OPTS -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=${gc_log_file_count} -XX:GCLogFileSize=${gc_log_file_size} \""
+    "GC_LOG_OPTS=\"\$GC_LOG_OPTS -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=${gc_log_file_count} -XX:GCLogFileSize=${gc_log_file_size} \"",
+    "GC_TUNE=\"\$GC_TUNE -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/solr-${solr_port}.hprof -XX:OnOutOfMemoryError='kill -9 %p' \"",
   ])
 
   concat::fragment { 'solr_config_ext':
