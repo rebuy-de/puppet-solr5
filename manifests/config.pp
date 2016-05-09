@@ -36,7 +36,7 @@ class solr5::config (
     "SOLR_LOGS_DIR=${solr_data_dir}/logs",
     "SOLR_PORT=${solr_port}",
     "GC_LOG_OPTS=\"\$GC_LOG_OPTS -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=${gc_log_file_count} -XX:GCLogFileSize=${gc_log_file_size} \"",
-    "GC_TUNE=\"\$GC_TUNE -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/solr-${solr_port}.hprof -XX:OnOutOfMemoryError='kill -9 %p' \"",
+    "GC_TUNE=\"\$GC_TUNE -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/solr-${solr_port}.hprof \"",
   ])
 
   concat::fragment { 'solr_config_ext':
