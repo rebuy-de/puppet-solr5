@@ -1,5 +1,5 @@
 class solr5::params {
-    $package_mirror = 'ftp://ftp.halifax.rwth-aachen.de/apache'
+    $package_mirror = 'https://archive.apache.org/dist/lucene/solr/'
     $package_version = '5.2.1'
     $package_target_dir = '/tmp'
     $solr_install_dir = '/opt'
