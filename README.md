@@ -61,7 +61,7 @@ Currently the only resource needed to configure the system is [init.pp](manifest
 ### `solr5`
 #### Parameters
 ##### package_url
-  Download url from the solr archive you'd like to install. Default: http://ftp.halifax.rwth-aachen.de/apache/lucene/solr/5.2.1/solr-5.2.1.tgz
+  Download url from the solr archive you'd like to install. Default: https://archive.apache.org/dist/lucene/solr//5.2.1/solr-5.2.1.tgz
 
 ##### package_version
 This paramter has to match the package version you'd like to install. Default: 5.2.1

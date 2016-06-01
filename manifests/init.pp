@@ -7,7 +7,7 @@
 #
 # [*package_url*]
 #   download url from the solr archive you'd like to install.
-#   default: http://ftp.halifax.rwth-aachen.de/apache/lucene/solr/5.2.1/solr-5.2.1.tgz
+#   default: https://archive.apache.org/dist/lucene/solr/5.2.1/solr-5.2.1.tgz
 #
 # [*package_version*]
 #   this paramter has to match the package version you'd like to install
@@ -69,7 +69,7 @@
 # Install solr version 5.2.0
 #
 #   class { 'solr5':
-#       package_url => 'http://ftp.halifax.rwth-aachen.de/apache/lucene/solr/5.2.0/solr-5.2.0.tgz',
+#       package_url => 'https://archive.apache.org/dist/lucene/solr/5.2.0/solr-5.2.0.tgz',
 #       package_version => '5.2.0'
 #   }
 #
