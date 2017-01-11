@@ -1,4 +1,4 @@
 rbenv:
   rubyVersion: '1.9.3-p551'
   mailerRecipients:
-    - 'dl-scb-tech-jenkins@rebuy.de'
+    - 'dl-scb-tech-jenkins@rebuy.com'
