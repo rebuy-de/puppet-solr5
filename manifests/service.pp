@@ -11,6 +11,7 @@ class solr5::service(
         refreshonly => true,
       }
     }
+
     service { $solr_name:
       ensure    => running,
       enable    => true,
