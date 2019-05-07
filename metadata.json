@@ -20,8 +20,8 @@
       "version_requirement": "4.x"
     },
     {
-      "name":"maestrodev/wget",
-      "version_requirement": "1.x"
+      "name":"puppet/archive",
+      "version_requirement": ">= 2.0.0"
     },
     {
       "name": "puppetlabs/concat",
@@ -29,4 +29,3 @@
     }
   ]
 }
-

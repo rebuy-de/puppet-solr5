@@ -15,8 +15,8 @@
 
 ## Overview
 
-This puppet module installs Solr version 5.x from a given URL pointing to a package. 
-Allowing you to add aditional configuration and setting up the service, so Solr is started in the background. 
+This puppet module installs Solr version 5.x from a given URL pointing to a package.
+Allowing you to add aditional configuration and setting up the service, so Solr is started in the background.
 The module is currently tested on CentOS 6.6 and 6.7.
 
 ## Module Description
@@ -29,8 +29,8 @@ It allows to automatically setting up a Solr installation with your provided con
 
 ### What solr5 affects
 
-* It downloads the archive to /tmp or a provided directory using the wget module
-* It will create the installation directory under /opt 
+* It downloads the archive to /tmp or a provided directory using the archive module
+* It will create the installation directory under /opt
 * It will create the data directory defaulting to /var/solr
 * It creates a service, might be disabled, which runs Solr.
 
@@ -96,7 +96,7 @@ The module is tested against Pupet Version 3.8 on CentOS 6.6 and 6.7. Other conf
 
 ## Development
 
-Feel free to fork and create pull requests, your code should adhere the to the best practices described at [https://docs.puppetlabs.com/puppet/3.8/reference/modules_fundamentals.html](https://docs.puppetlabs.com/puppet/3.8/reference/modules_fundamentals.html). 
+Feel free to fork and create pull requests, your code should adhere the to the best practices described at [https://docs.puppetlabs.com/puppet/3.8/reference/modules_fundamentals.html](https://docs.puppetlabs.com/puppet/3.8/reference/modules_fundamentals.html).
 Please test additional implemented functionality.
 
 For developing you will currently need:
@@ -104,8 +104,8 @@ For developing you will currently need:
 * Bundler in version `1.10.5`
 
 ### Prepare development environment
-* Install rbenv [rbenv](https://github.com/sstephenson/rbenv) 
-* Install the required version of ruby using `rbenv install 1.9.3p551`. 
+* Install rbenv [rbenv](https://github.com/sstephenson/rbenv)
+* Install the required version of ruby using `rbenv install 1.9.3p551`.
 * run `rbenv rehash`
 * update gem `gem update --system`
 * install bundler: `gem install bundler -v 1.10.5

@@ -18,11 +18,9 @@ describe 'solr5::install', :type => 'class' do
 
   it{
       should contain_class('solr5::install')
-      should contain_wget__fetch('download http://anywhere.in/the/net').with(
+      should contain_archive('/put/package/here/solr-5.2.2-el6.tar.gz').with(
         {
-          'source' => 'http://anywhere.in/the/net',
-          'destination' => '/put/package/here/solr-5.2.2-el6.tar.gz',
-
+          'source' => 'http://anywhere.in/the/net'
         })
       should contain_solr5__extract_file('install_solr_service.sh').with(
         {
