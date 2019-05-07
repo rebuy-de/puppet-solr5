@@ -32,7 +32,7 @@ class solr5::config (
   $settings = concat($init_config, [
     "SOLR_PID_DIR=${solr_data_dir}",
     "SOLR_HOME=${solr_data_dir}/data",
-    "LOG4J_PROPS=${solr_data_dir}/log4j.properties",
+    "LOG4J_PROPS=${solr_data_dir}/log4j2.xml",
     "SOLR_LOGS_DIR=${solr_data_dir}/logs",
     "SOLR_PORT=${solr_port}",
     "GC_LOG_OPTS=\"\$GC_LOG_OPTS -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=${gc_log_file_count} -XX:GCLogFileSize=${gc_log_file_size} \"",
