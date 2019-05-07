@@ -1,9 +1,8 @@
 fixtures:
   forge_modules:
-    wget:
-      repo: "maestrodev/wget"
-      ref: "1.7.1"
-      flags: --verbose
+    archive:
+      repo: "puppet/archive"
+      ref: "3.2.1"
     stdlib:
       repo: "puppetlabs/stdlib"
       ref: "4.11.0"

@@ -9,9 +9,8 @@ class solr5::install(
   $solr_port,
   $solr_name
 ){
-  wget::fetch { "download ${package_url}":
+  archive { "${package_target_dir}/${solr_archive_file_name}":
     source      => $package_url,
-    destination => "${package_target_dir}/${solr_archive_file_name}"
   } ->
 
   solr5::extract_file { 'install_solr_service.sh':
